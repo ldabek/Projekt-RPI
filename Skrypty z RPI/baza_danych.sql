@@ -1,0 +1,6 @@
+CREATE TABLE dane ( 
+lp INT NOT NULL AUTO_INCREMENT , 
+data DATETIME NOT NULL , 
+temperatura FLOAT NOT NULL , 
+wilgotnosc INT NOT NULL , 
+PRIMARY KEY (lp));
