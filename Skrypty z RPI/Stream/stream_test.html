@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Stream audio/video</title>
+		<script type="text/javascript" src='js/webrtc.js'></script>
+	</head>
+	<body>
+	<!-- Okno z stream-em -->
+		<div id="Stream" style="width:640px;height:480px">
+			<video id="stream-video" controls autoplay="" style="border:1px solid" width="640" height="480">
+				Twoja przegladarka nie obsluguje Video tagow.
+			</video>
+		</div>
+	<!-- Przyciski sterowania -->
+		<div id="sterowanie" style="width:533px">
+		   Sterowanie:
+		   <button style="height:40px" id="start" onclick="start();">Start</button>
+		   <button style="height:40px" disabled id="stop" onclick="stop();">Stop</button><br>
+		 </div>
+    </body>
+</html>
