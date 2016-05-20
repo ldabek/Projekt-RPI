@@ -27,8 +27,7 @@ def insert_data(temperature, humidity):
     """
     db = get_database_instance_ready_to_work()
     data_read_date = datetime.now()
-    db.temperature.insert_one(dict(temperature=temperature, date=data_read_date))
-    db.humidity.insert_one(dict(humidity=humidity, date=data_read_date))
+    db.data.insert_one(dict(temperature=temperature, humidity=humidity, date=data_read_date))
 
 
 def main():
