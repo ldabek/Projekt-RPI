@@ -1,0 +1,95 @@
+<body>
+<div class="container bodymain">
+
+
+    <!-- Start Logo Section -->
+    <section id="logo-section" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo text-center">
+                        <h1>Babysitter</h1>
+                        <span>Your baby's room monitoring</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Logo Section -->
+
+    <!-- Start Main Body Section -->
+    <div class="mainbody-section text-center">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3 babysitter-menu">
+
+                    <div class="menu-item blue" id="showVideo">
+                        <a>
+                            <p>Video</p>
+                        </a>
+                    </div>
+
+                    <div class="menu-item red" id="showcurrentmeasurement">
+                        <a>
+                            <p>Current measurement</p>
+                        </a>
+                    </div>
+
+                    <div class="menu-item green" id="showhistory">
+                        <a>
+                            <p>History</p>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    {{#if showVideo}}
+                    	<!-- Okno z stream-em -->
+                            <div id="Stream" style="width:640px;height:480px">
+                                <video id="stream-video" controls autoplay="" style="border:1px solid" width="640" height="480">
+                                    Twoja przegladarka nie obsluguje Video tagow.
+                                </video>
+                            </div>
+                        <!-- Przyciski sterowania -->
+                            <div id="sterowanie" style="width:533px">
+                               <button style="height:40px" id="start" onclick="start();">Start</button>
+                               <button style="height:40px" disabled id="stop" onclick="stop();">Stop</button><br>
+                             </div>
+                    {{/if}}
+
+                    {{#if showCurrentMeasurement}}
+                    <h1>CHUJ WIELKI JAK SZELKI</h1>
+                    {{/if}}
+
+
+                    {{#if showHistory}}
+                        <table class="table table-striped babysitter-table">
+                            <thead>
+                            <th>Date</th>
+                            <th>Temperature</th>
+                            <th>Humidity</th>
+                            </thead>
+                            {{#each data}}
+                            {{> record}}
+                            {{/each}}
+                        </table>
+                    {{/if}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+<template name="record">
+    <tr>
+        <td>{{date}}</td>
+        <td>{{temperature}}C</td>
+        <td>{{humidity}}%</td>
+    </tr>
+</template>
