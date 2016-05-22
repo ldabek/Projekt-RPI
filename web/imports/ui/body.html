@@ -32,7 +32,7 @@
 
                     <div class="menu-item red" id="showcurrentmeasurement">
                         <a>
-                            <p>Current measurement</p>
+                            <p>Newest measurement</p>
                         </a>
                     </div>
 
@@ -55,22 +55,26 @@
                             </div>
                         <!-- Przyciski sterowania -->
                             <div id="sterowanie" style="width:533px">
-                               <button style="height:40px" id="start" onclick="start();">Start</button>
-                               <button style="height:40px" disabled id="stop" onclick="stop();">Stop</button><br>
+                               <button style="height:40px" id="startbutton">Start</button>
+                               <button style="height:40px" disabled id="stopbutton">Stop</button><br>
                              </div>
                     {{/if}}
 
                     {{#if showCurrentMeasurement}}
-                    <h1>CHUJ WIELKI JAK SZELKI</h1>
+                        <p>
+                            {{#each newestData}}
+                                {{> newest}}
+                            {{/each}}
+                        </p>
                     {{/if}}
 
 
                     {{#if showHistory}}
                         <table class="table table-striped babysitter-table">
                             <thead>
-                            <th>Date</th>
-                            <th>Temperature</th>
-                            <th>Humidity</th>
+                                <th>Date</th>
+                                <th>Temperature</th>
+                                <th>Humidity</th>
                             </thead>
                             {{#each data}}
                             {{> record}}
@@ -87,9 +91,23 @@
 </body>
 
 <template name="record">
-    <tr>
+    <tr class="record">
         <td>{{date}}</td>
         <td>{{temperature}}C</td>
         <td>{{humidity}}%</td>
     </tr>
+</template>
+
+<template name="newest">
+    <table>
+        <tr class="table-tr">
+            <td class="table-title">Time:</td><td class="table-data"> {{date}}</td>
+        </tr>
+        <tr class="table-tr">
+            <td class="table-title">Temperature:</td><td class="table-data"> {{temperature}}C</td>
+        </tr>
+        <tr class="table-tr">
+            <td class="table-title">Humidity:</td><td class="table-data"> {{humidity}}%</td>
+        </tr>
+    </table>
 </template>

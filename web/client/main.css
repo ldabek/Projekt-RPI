@@ -12,3 +12,25 @@
 .table {
     color: #999;
 }
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.record:hover {
+    background-color:#f5f5f5;
+}
+
+.table-title {
+    font-size: 30px;
+    color: #999;
+    padding-right: 70px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.table-data {
+    font-size: 20px;
+    text-align: right;
+    color: #999;
+}
