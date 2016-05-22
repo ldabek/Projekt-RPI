@@ -1,0 +1,145 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Babysitter</title>
+    <!--<script src="../js/jquery-2.1.1.min.js"></script>-->
+
+    <!-- Bootstrap Core CSS -->
+    <!--<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+     <!--Font Awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Template js -->
+
+    <!--<script src="../bootstrap/js/bootstrap.min.js"></script>-->
+    <!--<script src="../js/jquery.appear.js"></script>-->
+    <!--<script src="../js/contact_me.js"></script>-->
+    <!--<script src="../js/jqBootstrapValidation.js"></script>-->
+    <!--<script src="../js/modernizr.custom.js"></script>-->
+    <!--<script src="../js/script.js"></script>-->
+
+</head>
+<body>
+<div class="container bodymain">
+
+
+    <!-- Start Logo Section -->
+    <section id="logo-section" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo text-center">
+                        <h1>Babysitter</h1>
+                        <span>Your baby's room monitoring</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Logo Section -->
+
+    <!-- Start Main Body Section -->
+    <div class="mainbody-section text-center">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3 babysitter-menu">
+
+                    <div class="menu-item blue" id="showVideo">
+                        <a>
+                            <p>Video</p>
+                        </a>
+                    </div>
+
+                    <div class="menu-item red" id="showcurrentmeasurement">
+                        <a>
+                            <p>Newest measurement</p>
+                        </a>
+                    </div>
+
+                    <div class="menu-item green" id="showhistory">
+                        <a>
+                            <p>History</p>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    {{#if showVideo}}
+                    	<!-- Okno z stream-em -->
+                            <div id="Stream" style="width:640px;height:480px">
+                                <video id="stream-video" controls autoplay="" style="border:1px solid" width="640" height="480">
+                                    Twoja przegladarka nie obsluguje Video tagow.
+                                </video>
+                            </div>
+                        <!-- Przyciski sterowania -->
+                            <div id="sterowanie" style="width:533px">
+                               <button style="height:40px" id="startbutton">Start</button>
+                               <button style="height:40px" disabled id="stopbutton">Stop</button><br>
+                             </div>
+                    {{/if}}
+
+                    {{#if showCurrentMeasurement}}
+                        <p>
+                            {{#each newestData}}
+                                {{> newest}}
+                            {{/each}}
+                        </p>
+                    {{/if}}
+
+
+                    {{#if showHistory}}
+                        <table class="table table-striped babysitter-table">
+                            <thead>
+                                <th>Date</th>
+                                <th>Temperature</th>
+                                <th>Humidity</th>
+                            </thead>
+                            {{#each data}}
+                            {{> record}}
+                            {{/each}}
+                        </table>
+                    {{/if}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+<template name="record">
+    <tr class="record">
+        <td>{{date}}</td>
+        <td>{{temperature}}C</td>
+        <td>{{humidity}}%</td>
+    </tr>
+</template>
+
+<template name="newest">
+    <table>
+        <tr class="table-tr">
+            <td class="table-title">Time:</td><td class="table-data"> {{date}}</td>
+        </tr>
+        <tr class="table-tr">
+            <td class="table-title">Temperature:</td><td class="table-data"> {{temperature}}C</td>
+        </tr>
+        <tr class="table-tr">
+            <td class="table-title">Humidity:</td><td class="table-data"> {{humidity}}%</td>
+        </tr>
+    </table>
+</template>
